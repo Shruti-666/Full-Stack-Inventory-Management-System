@@ -16,7 +16,7 @@ if not all([DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD]):
     raise ValueError("Database environment variables are missing")
 
 DATABASE_URL = (
-    f"postgresql://"
+    f"postgresql+psycopg2://"
     f"{DB_USER}:"
     f"{DB_PASSWORD}@"
     f"{DB_HOST}:"
