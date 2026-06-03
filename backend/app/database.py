@@ -15,14 +15,10 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 if not all([DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD]):
     raise ValueError("Database environment variables are missing")
 
-DATABASE_URL = (
-    f"postgresql+psycopg2://"
-    f"{DB_USER}:"
-    f"{DB_PASSWORD}@"
-    f"{DB_HOST}:"
-    f"{DB_PORT}/"
-    f"{DB_NAME}"
-)
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is missing")
 
 engine = create_engine(DATABASE_URL)
 
